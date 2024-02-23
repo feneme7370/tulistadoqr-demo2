@@ -10,7 +10,7 @@
     // Import Swiper Vue.js components
     import { Swiper, SwiperSlide } from 'swiper/vue';
     // import Swiper core and required modules
-    import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
+    import { Navigation, Pagination, Scrollbar, A11y, EffectCoverflow } from 'swiper/modules';
 
   // Import Swiper styles
   import 'swiper/css';
@@ -19,7 +19,7 @@
   import 'swiper/css/scrollbar';
 
 
-const modules = [Navigation, Pagination, Scrollbar, A11y];
+const modules = [Navigation, Pagination, Scrollbar, A11y, EffectCoverflow];
 
 </script>
 
@@ -27,7 +27,17 @@ const modules = [Navigation, Pagination, Scrollbar, A11y];
     <div>
         <swiper
         :modules="modules"
-        :effect="'cards'"
+        :effect="'coverflow'"
+        :grabCursor="true"
+        :centeredSlides="true"
+        :slidesPerView="'auto'"
+        :coverflowEffect="{
+        rotate: 50,
+        stretch: 0,
+        depth: 100,
+        modifier: 1,
+        slideShadows: true,
+        }"
           :slides-per-view="1.8"
           :space-between="5"
           navigation

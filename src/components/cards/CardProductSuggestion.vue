@@ -17,9 +17,9 @@
    
     <div class="my-2 px-2">
 
-        <hr class="border-primary-300">
+        <hr class="border-primary-800">
 
-        <div class="flex justify-center gap-1 my-2 bg-primary-100 text-gray-700 min-h-28">
+        <div class="flex justify-center gap-1 my-2 text-gray-700 min-h-28">
 
             <ImgTumbLightbox 
                 v-if="product.image_hero != ''"
@@ -34,9 +34,9 @@
                 :class="product.image_hero != '' ? 'w-8/12': 'w-11/12'"
                 class="py-1 px-2 flex flex-col justify-between">
                 <div>
-                <p class="text-gray-800 text-sm font-bold">{{ product.name }}</p>
+                <p class="text-gray-800 text-base font-bold">{{ product.name }}</p>
 
-                <p class="mb-1 font-light text-sm line-clamp-2">{{ product.description }}</p>
+                <p class="mb-1 font-light text-gray-700 text-sm line-clamp-2">{{ product.description }}</p>
                 </div>
 
                 <div class="my-1 flex items-center gap-1 overflow-x-auto overflow-hidden">
@@ -47,10 +47,10 @@
 
                 <div class="flex justify-between items-center gap-1">
                     <div v-if="product.price_original === product.price_seller || product.price_seller == '' || product.price_seller == '0'">
-                        <p class="mb-1 text-sm font-bold text-green-900">{{ formatCurrency(product.price_original)}}</p>
+                        <p class="mb-1 text-base font-bold text-green-900">{{ formatCurrency(product.price_original)}}</p>
                     </div>
                     <div v-else>
-                        <span class="mb-1 mr-2 font-bold text-sm text-green-900">{{ formatCurrency(product.price_seller)}}</span>
+                        <span class="mb-1 mr-2 font-bold text-base text-green-900">{{ formatCurrency(product.price_seller)}}</span>
                         <span class="line-through mb-1 text-xs text-red-700 dark:text-red-400">{{ formatCurrency(product.price_original)}}</span>
                     </div>
                     <div v-if="addToListButton">

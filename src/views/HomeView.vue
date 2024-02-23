@@ -115,9 +115,9 @@
     </div> -->
 
     <!-- ofertas -->
-    <div class="mb-10 max-w-lg mx-auto lg:rounded-md bg-primary-100 pb-2 pt-5">
+    <div class="mb-10 max-w-lg mx-auto lg:rounded-md bg-primary-100 pb-2 pt-3">
       <div v-if="apiProducts.offersDates[0]">
-        <h2 class="text-center font-bold text-4xl mb-2">Ofertas</h2>
+        <h2 class="text-center font-bold italic text-3xl my-5">Ofertas</h2>
       
 
           <SwiperSlider 

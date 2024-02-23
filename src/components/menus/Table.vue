@@ -32,7 +32,7 @@ const props = defineProps({
                         :name="category.image_hero"
                         :nameImg="category.name"
                     />
-                <h3 class="font-semibold text-xl mb-2">{{ category.name }}</h3>
+                <h3 class="font-semibold italic text-xl mb-2 text-gray-200">{{ category.name }}</h3>
                 <div></div>
               </div>
    

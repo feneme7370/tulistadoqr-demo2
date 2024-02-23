@@ -36,7 +36,7 @@ const toggleAccordion = (index) => {
           <hr class="mx-10 mb-5 border-primary-300">
           
           <div class="flex justify-center items-center gap-3 px-3">
-            <h2 class="text-center font-bold text-4xl mb-2">{{ level.name }}</h2>
+            <h2 class="text-center font-bold text-3xl italic mb-2">{{ level.name }}</h2>
           </div>
     
           <!-- categorias si corresponden con el nivel -->
@@ -48,7 +48,7 @@ const toggleAccordion = (index) => {
               
                 <!-- datos de las categorias -->
       
-                <h2 :id="'accordion-collapse-heading-' + (index + 1)" class="bg-primary-200 h-20 mb-1 lg:rounded-md transition-all ease-in-out">
+                <h2 :id="'accordion-collapse-heading-' + (index + 1)" class="flex justify-between items-center gap-5 mb-5 sm:px-3 bg-primary-600 h-20 border border-primary-900  lg:rounded-md">
                   <button
                     type="button"
                     class="accordion-button py-3 mb-2 w-full flex justify-between items-center"
@@ -63,12 +63,13 @@ const toggleAccordion = (index) => {
                         :name="category.image_hero"
                         :nameImg="category.name"
                     />
-                    <span class="font-semibold text-xl">{{ category.name }}</span>
+                    <span class="w-2/4 font-semibold italic text-xl mb-2 text-gray-200">{{ category.name }}</span>
+                    <div></div>
                   </div>
       
                     <svg
                       data-accordion-icon
-                      class="w-3 h-3 mx-3 rotate-180 shrink-0"
+                      class="w-3 h-3 mr-5 rotate-180 shrink-0 text-gray-200"
                       aria-hidden="true"
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"

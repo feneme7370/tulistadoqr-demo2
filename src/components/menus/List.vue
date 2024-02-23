@@ -27,14 +27,14 @@ const props = defineProps({
 
             <div v-if="category.level_id == level.id">
       
-              <div class="flex justify-start items-center gap-3 sm:px-3 bg-primary-200 h-20 lg:rounded-md">
+              <div class="flex justify-between items-center gap-5 sm:px-3 bg-primary-600 h-20 rounded-t-3xl lg:rounded-md">
                 <ImgTumbLightbox 
-                        class="w-12 h-12"
+                        class="w-12 h-12 ml-3"
                         :uri="urlBack()+category.image_hero_uri"
                         :name="category.image_hero"
                         :nameImg="category.name"
                     />
-                <h3 class="font-semibold text-xl mb-2">{{ category.name }}</h3>
+                <h3 class="w-2/4 font-semibold italic text-xl mb-2 text-gray-200">{{ category.name }}</h3>
                 <div></div>
               </div>
           

@@ -14,7 +14,7 @@
 <template>
 
 
-<footer class="bg-gray-100 border-t border-gray-300 dark:bg-gray-900">
+<footer class="bg-primary-400 border-t border-gray-300 text-gray-300">
     <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
         <div class="flex flex-col justify-between w-full">
           <div class="mb-3">
@@ -25,16 +25,16 @@
                     class="h-8 me-3" 
                     alt="Logo" 
                    />
-                  <span class="self-center text-3xl font-semibold whitespace-nowrap dark:text-white">{{ companiesDates.name }}</span>
+                  <span class="self-center text-2xl  font-semibold whitespace-nowrap ">{{ companiesDates.name }}</span>
               </a>
               <hr class="my-6 border border-gray-300 sm:mx-auto dark:border-gray-700 lg:my-8" />
           </div>
 
 
-          <div class="grid grid-cols-1 gap-3 sm:gap-6 sm:grid-cols-2 text-center mb-4">
-              <div>
-                  <h2 class="mb-2 text-lg font-semibold text-gray-900 uppercase dark:text-white">Datos</h2>
-                  <ul class="text-gray-500 dark:text-gray-400 font-medium">
+          <div class="grid grid-cols-1 gap-3 sm:gap-6 sm:grid-cols-2 text-center mb-4 ">
+              <div class="">
+                  <h2 class="mb-2 text-lg font-semibold text-gray-100 uppercase italic">Datos</h2>
+                  <ul class="font-medium">
                       <li class="mb-2">
                           <a class="text-sm">{{ companiesDates.email }}</a>
                       </li>
@@ -49,9 +49,9 @@
                       </li>
                   </ul>
               </div>
-              <div>
-                <h2 class="mb-2 text-lg font-semibold text-gray-900 uppercase dark:text-white">Nosotros</h2>
-                  <ul class="text-gray-500 dark:text-gray-400 font-medium">
+              <div v-if="companiesDates.times_description != ''">
+                <h2 class="mb-2 text-lg font-semibold text-gray-100 uppercase italic">Nosotros</h2>
+                  <ul class="font-medium">
                       <li class="mb-2">
                           <a class="text-sm">{{ companiesDates.times_description }}</a>
                       </li>
@@ -59,14 +59,14 @@
               </div>
           </div>
           <div>
-            <h2 class="mb-4 text-center text-lg font-semibold text-gray-900 uppercase dark:text-white">Redes Sociales</h2>
+            <h2 class="mb-4 text-center text-lg text-gray-100 font-semibold uppercase italic">Redes Sociales</h2>
                 <div class="flex flex-wrap justify-center items-center mt-4 sm:mt-0">
                 <!-- <div v-if="companiesDates.socialMedia.some(item => item.pivot.url === '')"> -->
 
                     <!-- <div v-for="social in companiesDates.socialMedia"> -->
                         <div v-for="social in companiesDates.socialMedia" :key="social.id" class="flex justify-center flex-wrap">
-                            <a v-if="social.pivot.url != ''" :href="'https://'+social.pivot.url" target="_blank" class="m-2 text-gray-500 hover:text-gray-900 dark:hover:text-white">
-                                <SocialIcons :icon="social.slug" class="dark:bg-gray-200 dark:p-2 dark:rounded-3xl"/>
+                            <a v-if="social.pivot.url != ''" :href="'https://'+social.pivot.url" target="_blank" class="m-2 ">
+                                <SocialIcons :icon="social.slug" class="fill-gray-300 hover:fill-gray-200"/>
                                 <!-- <span class="sr-only ">{{social.slug}}</span> -->
                             </a>
                         </div>
