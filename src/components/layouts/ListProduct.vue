@@ -24,7 +24,7 @@
 
         <div>
         <!-- Modal toggle -->
-        <button data-modal-target="list-product-modal" data-modal-toggle="list-product-modal" class="bg-primary-900 text-gray-200 w-full text-lg font-bold my-2 me-2 px-3 py-2 rounded" type="button">
+        <button data-modal-target="list-product-modal" data-modal-toggle="list-product-modal" class="bg-primary-900 text-gray-50 w-full text-lg font-bold my-2 me-2 px-3 py-2 rounded" type="button">
         Voy a pedir al mozo
         </button>
 

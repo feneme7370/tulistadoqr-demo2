@@ -16,10 +16,10 @@
     <div class="my-2 px-2 py-1 bg-primary-400 rounded-3xl">
 
         <div class="flex flex-col items-start justify-between gap-1 my-2  text-gray-700 w-full min-h-36">
-            <div>
+            <div class="w-full h-48 rounded-sm overflow-hidden self-center">
                 <ImgTumbLightbox 
                     v-if="product.image_hero != ''"
-                    class="w-full h-28 object-cover"
+                    class=""
                     :uri="urlBack()+product.image_hero_uri"
                     :name="product.image_hero"
                     :nameImg="product.category + ' - ' + product.name"
