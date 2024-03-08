@@ -65,7 +65,7 @@ watch(() => props.companiesDates, (newCompaniesDates) => {
                     <div class="w-full flex justify-between items-center">
                         <span></span>
                         <button class=" bg-primary-200 text-gray-100 text-xs font-bold my-2 me-2 px-3 py-2 rounded"  @click="apiList.clearList">Vaciar lista</button>
-                        <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="list-product-modal">
+                        <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center " data-modal-hide="list-product-modal">
                             <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
                             </svg>
@@ -112,9 +112,9 @@ watch(() => props.companiesDates, (newCompaniesDates) => {
                         </div>
                     
                         <div class="flex items-center gap-3">
-                        <button class="block whitespace-nowrap  bg-primary-100 text-primary-900 text-sm font-medium my-2 px-2.5 py-0.5 w-6 h-6 rounded dark:bg-primary-900 dark:text-primary-300" @click="apiList.lessAmount(product.id)">-</button>
+                        <button class="block whitespace-nowrap  bg-primary-100 text-primary-900 text-sm font-medium my-2 px-2.5 py-0.5 w-6 h-6 rounded " @click="apiList.lessAmount(product.id)">-</button>
                         <span class="text-gray-700 text-xs font-medium">{{ formatCurrency(product.cantidad * ((product.price_seller > 0 && product.price_seller < product.price_original) ? product.price_seller : product.price_original))}}</span>
-                        <button class="block whitespace-nowrap  bg-primary-100 text-primary-800 text-sm font-medium my-2 px-2.5 py-0.5 w-6 h-6 rounded dark:bg-primary-900 dark:text-primary-300" @click="apiList.moreAmount(product.id)">+</button>
+                        <button class="block whitespace-nowrap  bg-primary-100 text-primary-800 text-sm font-medium my-2 px-2.5 py-0.5 w-6 h-6 rounded " @click="apiList.moreAmount(product.id)">+</button>
                     
                         </div>
                     </div>

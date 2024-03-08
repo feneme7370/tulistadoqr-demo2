@@ -53,7 +53,7 @@
                         <span class="line-through mb-1 text-xs text-red-200 ">{{ formatCurrency(product.price_original)}}</span>
                     </div>
                     <div v-if="addToListButton">
-                        <button class="block whitespace-nowrap bg-green-100 text-green-800 text-sm font-bold my-2 me-2 px-2.5 py-0.5 rounded dark:bg-green-100 dark:text-green-300" @click="apiList.addToList(product)">Agregar</button>
+                        <button class="block whitespace-nowrap bg-green-200 text-green-800 text-sm font-bold my-2 me-2 px-2.5 py-0.5 rounded" @click="apiList.addToList(product)">Agregar</button>
                     </div>
                 </div>
 

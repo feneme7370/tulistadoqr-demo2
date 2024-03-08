@@ -27,7 +27,7 @@
                    />
                   <span class="self-center text-2xl  font-semibold whitespace-nowrap ">{{ companiesDates.name }}</span>
               </a>
-              <hr class="my-6 border border-gray-300 sm:mx-auto dark:border-gray-700 lg:my-8" />
+              <hr class="my-6 border border-gray-300 sm:mx-auto lg:my-8" />
           </div>
 
 
@@ -77,11 +77,11 @@
           </div> 
       </div>
 
-      <hr class="my-6 border border-gray-300 sm:mx-auto dark:border-gray-700 lg:my-8" />
+      <hr class="my-6 border border-gray-300 sm:mx-auto  lg:my-8" />
 
       <div class="sm:flex sm:items-center sm:justify-between">
             <div class="text-center">
-                <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© {{ dateYear }} - <a href="https://tumenuqr.femaser.com" target="_blank" class="hover:underline">TuMenuQR</a>. All Rights Reserved.
+                <span class="text-sm text-gray-500 sm:text-center ">© {{ dateYear }} - <a href="https://tumenuqr.femaser.com" target="_blank" class="hover:underline">TuMenuQR</a>. All Rights Reserved.
                 </span>
             </div>
       </div>
