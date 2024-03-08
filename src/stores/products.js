@@ -27,7 +27,6 @@ export const useProductsStore = defineStore('apiProducts', () => {
         productsDates.value = await dataProducts.data['responseProducts']
         offersDates.value = await dataProducts.data['responseProducts'].filter(offers => offers.offer === true)
         suggestionsDates.value = await dataProducts.data['responseProducts'].filter(suggestions => suggestions.suggestion === true)
-        console.log(productsDates.value);
         // console.log(suggestionsDates.value);
         
         menuSelected.value = await dataProducts.data['responseCompany'][0].type_menu

@@ -1,17 +1,29 @@
 <script setup>
-    import { computed, ref } from 'vue';
+    import { computed, ref, watch } from 'vue';
   import { formatCurrency } from '@/helpers/price'
   import { useListStore } from '@/stores/list';
   import SocialIcons from '@/components/layouts/SocialIcons.vue'
 //   import { useProductsStore } from '@/stores/products'
 //   const apiProducts = useProductsStore()
   const apiList = useListStore()
+// recibir datos
+const props = defineProps({
+    companiesDates: {type: Object, required: true}
+})
 
-
+const urlDeWhatsapp = ref('')
+// Utilizar el hook watch para esperar cambios en props.companiesDates
+watch(() => props.companiesDates, (newCompaniesDates) => {
+      // Verificar si props.companiesDates tiene datos antes de acceder a la URL de WhatsApp
+      if (newCompaniesDates && newCompaniesDates.socialMedia) {
+        const whatsappObj = newCompaniesDates.socialMedia.find(media => media.slug === 'whatsapp');
+        urlDeWhatsapp.value = whatsappObj ? whatsappObj.pivot.url : '';
+      }
+    });
 
   const totalAmount = computed(()=>{
         return apiList.ListProduct.reduce((total, product) => 
-            total + (product.cantidad * (product.price_seller > 0 ? product.price_seller : product.price_original)), 0
+            total + (product.cantidad * ((product.price_seller > 0 && product.price_seller < product.price_original) ? product.price_seller : product.price_original)), 0
         )
     })
 
@@ -117,7 +129,8 @@
                                 <span>{{ formatCurrency(totalAmount) }}</span>
                             </p>
                         </div>
-                        <a :href="'https://api.whatsapp.com/send/?phone=5492396513953&amp;text='+encodeURIComponent('Quiero pedir\n'+totalWsp+'\nNombre: '+nameClient+'\nDireccion: '+adressClient+'\nMetodo: '+formatClient+'.')" target="_blank"
+                        <!-- <p>{{ companiesDates.socialMedia }}</p> -->
+                        <a :href="'https://api.whatsapp.com/send/?phone='+urlDeWhatsapp+'&amp;text='+encodeURIComponent('Quiero pedir\n'+totalWsp+'\nNombre: '+nameClient+'\nDireccion: '+adressClient+'\nMetodo: '+formatClient+'.')" target="_blank"
                             class="block w-full px-2 py-3 mt-3 text-base font-semibold text-center text-white bg-gray-900 rounded shadow-sm hover:bg-primary-600">Lo quiero!</a>
                     </div>
                     <p v-else class="font-bold italic text-center my-5">Agregue productos a su pedido</p>

@@ -30,6 +30,7 @@
     />
 
       <ListProduct 
+      :companiesDates="apiProducts.companiesDates"
         :class="apiProducts.companiesDates.list_product ? 'block' : 'hidden'"
       />
     <!-- seleccionar menu -->
