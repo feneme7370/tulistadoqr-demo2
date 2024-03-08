@@ -1,7 +1,8 @@
 <script setup>
-    import { computed } from 'vue';
+    import { computed, ref } from 'vue';
   import { formatCurrency } from '@/helpers/price'
   import { useListStore } from '@/stores/list';
+  import SocialIcons from '@/components/layouts/SocialIcons.vue'
 //   import { useProductsStore } from '@/stores/products'
 //   const apiProducts = useProductsStore()
   const apiList = useListStore()
@@ -11,6 +12,16 @@
   const totalAmount = computed(()=>{
         return apiList.ListProduct.reduce((total, product) => 
             total + (product.cantidad * (product.price_seller > 0 ? product.price_seller : product.price_original)), 0
+        )
+    })
+
+    const nameClient = ref('')
+    const adressClient = ref('')
+    const formatClient = ref('')
+
+    const totalWsp = computed(()=>{
+        return apiList.ListProduct.reduce((total, product) => 
+            total + (product.cantidad +' - '+product.name+', \n'), ''
         )
     })
 
@@ -24,9 +35,13 @@
 
         <div>
         <!-- Modal toggle -->
+        
+        <div class="fixed end-2 top-16 z-50">
+        <!-- Modal toggle -->
         <button data-modal-target="list-product-modal" data-modal-toggle="list-product-modal" class="bg-primary-900 text-gray-50 w-full text-lg font-bold my-2 me-2 px-3 py-2 rounded" type="button">
-        Voy a pedir al mozo
+            <SocialIcons icon="cart" class="fill-gray-100 p-3"/>
         </button>
+        </div>
 
         <!-- Main modal -->
         <div id="list-product-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
@@ -47,6 +62,28 @@
                     </div>
                     
                     <hr class="border-primary-300 w-10/12 mx-auto">
+
+                    <div class="w-full">
+                        <div>
+                            <label for="name_client" class="block mt-2 text-sm font-medium text-gray-900 ">Nombre</label>
+                            <input v-model="nameClient" type="text" id="name_client" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg active:outline-none focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5" placeholder="Su nombre" />
+                        </div>
+                        <div>
+                            <label for="adress_client" class="block mt-2 text-sm font-medium text-gray-900 ">Direccion</label>
+                            <input v-model="adressClient" type="text" id="adress_client" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg active:outline-none focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5" placeholder="Su direccion" />
+                        </div>
+                        <div>
+                            <label for="format_client" class="block mt-2 text-sm font-medium text-gray-900 ">Forma</label>
+                            <select v-model="formatClient" id="format_client" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg active:outline-none focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5">
+                                <option selected value="Envio a domicilio">Envio a domicilio</option>
+                                <option value="Paso a retirar">Paso a retirar</option>
+                                <option value="Pedido desde la mesa">Pedido desde la mesa</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <hr class="border-primary-300 w-10/12 mx-auto">
+
                     <div v-for="product in apiList.ListProduct">
                     
                         <!-- <hr class="border-primary-300 w-2/3 mx-auto"> -->
@@ -58,15 +95,13 @@
                             </div>
                             <div class="flex items-center justify-between gap-1">
                         
-                                <span class="text-gray-700 text-xs font-medium">c/u:{{ formatCurrency(product.price_seller > 0 ? product.price_seller : product.price_original)}}</span>
-                                
-                                <!-- <button class="block whitespace-nowrap  bg-red-100 text-red-800 text-xs font-medium my-2 me-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300" @click="apiList.deleteProduct(product.id)">Quitar</button> -->
+                                <span class="text-gray-700 text-xs font-medium">c/u:{{ formatCurrency((product.price_seller > 0 && product.price_seller < product.price_original) ? product.price_seller : product.price_original)}}</span>
                             </div>
                         </div>
                     
                         <div class="flex items-center gap-3">
                         <button class="block whitespace-nowrap  bg-primary-100 text-primary-900 text-sm font-medium my-2 px-2.5 py-0.5 w-6 h-6 rounded dark:bg-primary-900 dark:text-primary-300" @click="apiList.lessAmount(product.id)">-</button>
-                        <span class="text-gray-700 text-xs font-medium">{{ formatCurrency(product.cantidad * (product.price_seller > 0 ? product.price_seller : product.price_original))}}</span>
+                        <span class="text-gray-700 text-xs font-medium">{{ formatCurrency(product.cantidad * ((product.price_seller > 0 && product.price_seller < product.price_original) ? product.price_seller : product.price_original))}}</span>
                         <button class="block whitespace-nowrap  bg-primary-100 text-primary-800 text-sm font-medium my-2 px-2.5 py-0.5 w-6 h-6 rounded dark:bg-primary-900 dark:text-primary-300" @click="apiList.moreAmount(product.id)">+</button>
                     
                         </div>
@@ -75,11 +110,16 @@
                     
                     </div>
                     
-                    
-                    <p v-if="totalAmount" class="flex justify-between mt-10 items-center text-gray-800 text-base font-bold">
-                        <span>Total a pagar:</span>
-                        <span>{{ formatCurrency(totalAmount) }}</span>
-                    </p>
+                    <div v-if="totalAmount">
+                        <div>
+                            <p  class="flex justify-between mt-10 items-center text-gray-800 text-base font-bold">
+                                <span>Total a pagar:</span>
+                                <span>{{ formatCurrency(totalAmount) }}</span>
+                            </p>
+                        </div>
+                        <a :href="'https://api.whatsapp.com/send/?phone=5492396513953&amp;text='+encodeURIComponent('Quiero pedir\n'+totalWsp+'\nNombre: '+nameClient+'\nDireccion: '+adressClient+'\nMetodo: '+formatClient+'.')" target="_blank"
+                            class="block w-full px-2 py-3 mt-3 text-base font-semibold text-center text-white bg-gray-900 rounded shadow-sm hover:bg-primary-600">Lo quiero!</a>
+                    </div>
                     <p v-else class="font-bold italic text-center my-5">Agregue productos a su pedido</p>
 
 

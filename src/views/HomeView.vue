@@ -101,47 +101,29 @@
       :companiesDates="apiProducts.companiesDates"
     />
 
-    <!-- ofertas -->
-    <!-- <div class="mb-10 max-w-lg mx-auto lg:rounded-md bg-primary-300 pb-2 pt-5">
-      <div v-if="apiProducts.offersDates[0]">
-        <h2 class="text-center font-bold text-4xl mb-5">Ofertas</h2>
-      
-        <div v-for="offers in apiProducts.offersDates" :key="offers.id" class="my-2 px-2">
-
-          <CardProductSuggestion 
-            :product="offers"
-          />
-        </div>
-      </div>
-    </div> -->
 
     <!-- ofertas -->
-    <div class="mb-10 max-w-lg mx-auto lg:rounded-md bg-primary-100 pb-2 pt-3">
-      <div v-if="apiProducts.offersDates[0]">
-        <h2 class="text-center font-bold italic text-3xl my-5">Ofertas</h2>
+    <div v-if="apiProducts.offersDates.length > 0" class="mb-10 max-w-lg mx-auto lg:rounded-md bg-primary-100 pb-2 pt-5">
+        <h2 class="text-center font-bold text-4xl mb-2">Ofertas</h2>
       
-
           <SwiperSlider 
           :offersDates="apiProducts.offersDates"
           :addToListButton="apiProducts.companiesDates.list_product"
           />
 
-      </div>
     </div>
   
     <!-- sugeridos -->
-    <div class="mb-10 max-w-lg mx-auto lg:rounded-md">
-      <div v-if="apiProducts.suggestionsDates[0]">
+    <div v-if="apiProducts.suggestionsDates.length > 0" class="mb-10 max-w-lg mx-auto lg:rounded-md">
         <h2 class="text-center font-bold text-4xl mb-5">Sugeridos</h2>
       
         <div v-for="suggetion in apiProducts.suggestionsDates" :key="suggetion.id" class="my-2 px-2">
 
           <CardProductSuggestion 
-            :product="suggetion.product"
+            :product="suggetion"
             :addToListButton="apiProducts.companiesDates.list_product"
           />
         </div>
-      </div>
     </div>
   
     <!-- footer -->

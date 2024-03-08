@@ -46,7 +46,7 @@
                 </div>
 
                 <div class="flex justify-between items-center gap-1">
-                    <div v-if="product.price_original === product.price_seller || product.price_seller == '' || product.price_seller == '0'">
+                    <div v-if="product.price_original < product.price_seller || product.price_seller == '' || product.price_seller == '0'">
                         <p class="mb-1 text-base font-bold text-green-900">{{ formatCurrency(product.price_original)}}</p>
                     </div>
                     <div v-else>
