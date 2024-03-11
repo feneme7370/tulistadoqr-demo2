@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 import { reactive, ref, onMounted, watch } from 'vue';
-import { toastrSuccess } from "@/helpers/toastr-message";
+import { toastrError, toastrSuccess } from "@/helpers/toastr-message";
 
 export const useListStore = defineStore( 'apiList', () => {
 
