@@ -39,7 +39,7 @@
         <div v-if="categoriesDates.some(category => category.level_id === level.id)" >
 
           <!-- imagen y nombre de la categoria general, con evento click para marcar id -->
-          <div @click="levelIdSelected(level.id)" class="my-2 bg-center bg-no-repeat w-28 h-28 px-1 mx-5 relative animate__animated animate__backInUp animate__faster">
+          <div @click="levelIdSelected(level.id)" class="my-2 bg-center bg-no-repeat w-28 h-28 px-1 mx-5 relative animate__animated animate__backInUp animate__faster flex items-center justify-center flex-col" :class="level.image_hero ? 'w-28 h-28' : 'w-28 h-5'">
             
             <img 
                 loading="lazy"
@@ -48,9 +48,9 @@
                 alt="imagen portada"
             >
             
-            <div class="absolute right-0 -bottom-5 left-0 px-1 mx-auto max-w-screen-xl text-center flex items-center justify-center flex-col cursor-pointer">
+            <div class="absolute -bottom-5 mx-auto min-w-28 px-1 max-w-screen-xl text-center flex items-center justify-center flex-col cursor-pointer">
               <a class="bg-primary-100 rounded-lg block w-full border-2 border-primary-200">
-                <h1 class="my-2 text-base sm:text-xl truncate font-extrabold text-gray-800 ">{{ level.name }}</h1>
+                <h1 class="my-2 text-base sm:text-xl line-clamp-2 px-1 font-extrabold text-gray-800 ">{{ level.name }}</h1>
               </a>
             </div>
     
@@ -77,7 +77,7 @@
             <!-- imagen y titulo de las categorias correspondientes al nivel seleccionado -->
             <div 
               v-if="category.level_id == levelId" 
-              class="animate__animated animate__backInUp animate__faster mb-10 bg-center bg-no-repeat w-20 h-20 cursor-pointer relative mx-5"
+              class="animate__animated animate__backInUp animate__faster mb-10 bg-center bg-no-repeat w-20 h-20 cursor-pointer relative mx-5 flex items-center justify-center flex-col"
               @click="categoryId = category.id"
             >
                 <img 
@@ -87,8 +87,8 @@
                     alt="imagen portada"
                 >
 
-                <div class="absolute right-0 -bottom-5 left-0 mx-auto text-center flex items-center justify-center flex-col">
-                    <a class="bg-primary-100 rounded-lg w-full border-2 truncate border-primary-200 py-1 text-sm text-gray-800">
+                <div class="absolute -bottom-5 mx-auto min-w-20 text-center flex items-center justify-center flex-col">
+                    <a class="bg-primary-100 rounded-lg w-full border-2 line-clamp-2 px-1 border-primary-200 py-1 text-sm text-gray-800">
                       {{ category.name }}
                     </a>
                 </div>
